@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Countdown } from "@/components/countdown";
 import { JerseyPlate } from "@/components/jersey-plate";
 import { SignupForm } from "@/components/signup-form";
 import { SiteHeader } from "@/components/site-header";
@@ -56,9 +55,9 @@ function Hero() {
           operations to Aurora. Saturday, October 31 is the last day here. We
           can&apos;t wait to see you.
         </p>
-        <div className="mt-5">
-          <Countdown />
-        </div>
+        <p className="mt-5 text-sm font-medium text-sign">
+          Last day is Saturday, October 31.
+        </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <a
             href="#list"
@@ -82,7 +81,7 @@ function Hero() {
       </div>
 
       <figure>
-        <div className="bg-sign p-2 shadow-[12px_12px_0_0_#0136b2] sm:p-3">
+        <div className="bg-sign p-1.5 shadow-[10px_10px_0_0_#0136b2]">
           <Image
             src="/store-team.jpg"
             alt="The Sports Store team standing under the shop sign at Upper Canada Mall, with jerseys on the wall and a small white dog."
@@ -93,9 +92,9 @@ function Hero() {
             className="h-auto w-full"
           />
         </div>
-        <figcaption className="mt-4 flex items-start justify-between gap-4 text-sm text-ink/70">
+        <figcaption className="mt-4 flex flex-col gap-1 text-sm text-ink/70 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
           <span>The team, still at Upper Canada Mall.</span>
-          <span className="shrink-0 tracking-[0.14em] uppercase">Newmarket</span>
+          <span className="tracking-[0.14em] uppercase">Newmarket</span>
         </figcaption>
       </figure>
     </section>
@@ -215,7 +214,7 @@ function Plans() {
                   Sell
                 </p>
                 <p className="mt-3 font-serif text-3xl leading-none tracking-tight sm:text-4xl">
-                  Bring yours in.
+                  Sell us yours.
                 </p>
               </div>
             </div>
@@ -276,9 +275,12 @@ function Footer() {
           <Wordmark />
           <p className="mt-4 font-serif text-2xl text-ink">Thank you, Newmarket.</p>
         </div>
-        <p className="flex items-center gap-2 text-sm text-ink/70">
-          <MapleLeaf className="text-maple" />
-          Last day at Upper Canada Mall: Saturday, October 31.
+        <p className="flex items-start gap-2 text-sm leading-relaxed text-ink/70">
+          <MapleLeaf className="mt-1 shrink-0 text-maple" />
+          <span>
+            Last day at Upper Canada Mall
+            <span className="block">Saturday, October 31</span>
+          </span>
         </p>
       </div>
     </footer>

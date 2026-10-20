@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, type ComponentProps } from "react";
+import { useActionState, useEffect, type ComponentProps } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,9 +11,21 @@ const initialState: SignupState = { status: "idle" };
 export function SignupForm() {
   const [state, action, pending] = useActionState(signup, initialState);
 
+  useEffect(() => {
+    if (state.status === "idle") return;
+    document.getElementById("signup-panel")?.scrollIntoView({
+      block: "center",
+      behavior: "instant",
+    });
+  }, [state]);
+
   if (state.status === "success") {
     return (
-      <div className="border border-sign bg-white px-6 py-8" role="status">
+      <div
+        id="signup-panel"
+        className="border border-sign bg-white px-6 py-8"
+        role="status"
+      >
         <p className="text-xs font-semibold tracking-[0.18em] text-sign uppercase">
           You&apos;re on the list
         </p>
@@ -29,7 +41,7 @@ export function SignupForm() {
   }
 
   return (
-    <form action={action} className="grid gap-5" noValidate>
+    <form id="signup-panel" action={action} className="grid gap-5" noValidate>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field
           id="firstName"
